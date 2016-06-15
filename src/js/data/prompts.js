@@ -2,13 +2,13 @@ module.exports = {
 	"prompts" : [
 		{
 			"id": 1,
-			"text": "How about a kitty?",
-			"button": "Gimme a kitty!"
+			"text": "Would you like a kitty?",
+			"button": "Yes!"
 		},
 		{
 			"id": 2,
-			"text": "Nobody has just one cat...",
-			"button": "True story. Another cat please!" 
+			"text": "But nobody has just one cat...",
+			"button": "Another cat please!" 
 		},
 		{
 			"id": 3,
@@ -22,13 +22,18 @@ module.exports = {
 		},
 		{
 			"id": 5,
-			"text": "Ok that's probably enough cats for one day...",
-			"button": "Moar kittens!"
+			"text": "That's probably enough cats for one person...",
+			"button": "Moar!"
 		},
 		{
 			"id": 6,
-			"text": "Hm.. some might say you are becoming a crazy cat lady...",
-			"button": "Yeah right! Show me them kitties!!!"
+			"text": "You are on the verge of crazy cat person status. I think you better–",
+			"button": "Show me them kitties!!!"
+		},
+		{
+			"id": 7,
+			"text": "You should probably stop now.",
+			"button": "Never."
 		}
 	]
 }

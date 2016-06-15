@@ -3,6 +3,7 @@ var AppActions = require('../actions/AppActions');
 var AppStore = require('../stores/AppStore');
 var CatInfinity = require('./CatInfinity');
 var CatAdder = require('./CatAdder');
+var Error = require('./Error');
 
 // Holds all of our state values
 function getAppState() {
@@ -11,7 +12,9 @@ function getAppState() {
 		prompts: AppStore.getPrompts(),
 		currentPrompt: AppStore.getCurrentPrompt(),
 		cats: AppStore.getCats(),
-		currentCat: AppStore.getCurrentCat()
+		currentCat: AppStore.getCurrentCat(),
+		infinityMessage: AppStore.getInfinityMessage(),
+		errorMessage: AppStore.getErrorMessage()
 	}
 }
 
@@ -37,11 +40,14 @@ var App = React.createClass({
 		var cats = <CatAdder { ...this.state } />
 
 		if (this.state.currentPrompt > this.state.prompts.length)  {
-			cats = <CatInfinity />
+			cats = <CatInfinity cats={ this.state.cats } message={ this.state.infinityMessage } />
 		}
 
+		var error = !!this.state.errorMessage ? <Error message={ this.state.errorMessage } /> : ''
+
 		return (
-			<div>
+			<div id="app-container">
+				{ error }
 				{ cats }
 			</div>
 		)

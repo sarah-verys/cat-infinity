@@ -5,7 +5,7 @@ var Prompt = React.createClass({
 
 	render: function() {
 		return (
-			<div>
+			<div id="prompt">
 				<h4>{ this.props.prompt }</h4>
 				<button onClick={ AppActions.getGiphyCat }>{ this.props.button }</button>
 			</div>

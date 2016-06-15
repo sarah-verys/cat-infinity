@@ -5,8 +5,8 @@ var Cat = React.createClass({
 
 	render: function() {
 		return (
-			<div>
-				<iframe src={ this.props.cat } width="480" height="267" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+			<div className="cat">
+				<iframe src={ this.props.cat } frameBorder="0" allowFullScreen></iframe>
 			</div>
 		)
 	}
