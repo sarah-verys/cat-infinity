@@ -1,6 +1,5 @@
  var gulp = require('gulp'),
  	browserify = require('browserify'), // Transpile ES6 to browser-friendly ES5
- 	reactify = require('reactify'), // Converts jsx to js
  	source = require('vinyl-source-stream'), // Converts string to stream for Browserify
  	browserSync = require('browser-sync').create(),
  	runSequence = require('run-sequence'), // Run a series of dependent gulp tasks in order
@@ -51,7 +50,9 @@
  */
  gulp.task('browserify', function() {
  	return browserify(config.paths.entryFile, {debug: true})
- 		.transform('reactify')
+    .transform("babelify", {
+      presets: ["es2015", "react"]
+    })
  		.bundle()
  		.pipe(source('application.js'))
  		.pipe(gulp.dest(config.paths.tmp + '/js'));
