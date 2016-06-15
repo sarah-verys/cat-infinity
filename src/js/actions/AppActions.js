@@ -20,11 +20,6 @@ var AppActions = {
 				}
 			);
 	}
-	// reset: function() {
-	// 	AppDispatcher.handleViewAction({
-	// 		actionType: AppConstants.RESET
-	// 	})
-	// }
 }
 
 module.exports = AppActions;

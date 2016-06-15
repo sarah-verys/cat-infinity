@@ -11,7 +11,6 @@ var _title = 'Y helo thar!';
 var _cats = [];
 var _prompts = Data.prompts;
 var _currentPrompt = 1;
-var _currentCat = -1;
 var _error = null;
 
 var AppStore = assign({}, EventEmitter.prototype, {
@@ -23,12 +22,6 @@ var AppStore = assign({}, EventEmitter.prototype, {
 	},
 	setTitle: function(title) {
 		_title = title;
-	},
-	getCurrentCat: function() {
-		return _currentCat;
-	},
-	incrementCurrentCat: function() {
-		_currentCat++;
 	},
 	getCats: function() {
 		return _cats;
@@ -54,14 +47,6 @@ var AppStore = assign({}, EventEmitter.prototype, {
 	resetErrorMessage: function() {
 		_error = null;
 	},
-	// reset: function() {
-	// 	_title = 'Oh.. you again?';
-	// 	_cats = [];
-	// 	_prompts = Data.prompts;
-	// 	_currentPrompt = 1;
-	// 	_currentCat = -1;
-	// 	_error = null;
-	// },
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
 	},
@@ -88,7 +73,6 @@ AppDispatcher.register(function(payload) {
 			}
 			// Add the cat to your cat collection
 			AppStore.addCat(action.cat);
-			AppStore.incrementCurrentCat();
 			// Show next prompt
 			AppStore.incrementCurrentPrompt();
 			AppStore.emit(CHANGE_EVENT);
@@ -97,12 +81,8 @@ AppDispatcher.register(function(payload) {
 		case AppConstants.GET_GIPHY_CAT_ERROR:
 			AppStore.setError(action.error);
 			AppStore.emit(CHANGE_EVENT);
-			break;
+			break;		
 
-		// case AppConstants.RESET:
-		// 	AppStore.reset();
-		// 	AppStore.emit(CHANGE_EVENT);
-		// 	break;
 	}
 
 	return true;

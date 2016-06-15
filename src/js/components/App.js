@@ -12,7 +12,6 @@ function getAppState() {
 		prompts: AppStore.getPrompts(),
 		currentPrompt: AppStore.getCurrentPrompt(),
 		cats: AppStore.getCats(),
-		currentCat: AppStore.getCurrentCat(),
 		infinityMessage: AppStore.getInfinityMessage(),
 		errorMessage: AppStore.getErrorMessage()
 	}
@@ -43,17 +42,11 @@ var App = React.createClass({
 		this.infiniteCats = setInterval(AppActions.getGiphyCat, 8000);
 	},
 
-	// reset() {
-	// 	clearInterval(this.infiniteCats);
-	// 	AppActions.reset();
-	// },
-
 	render: function() {
 
 		var cats = <CatAdder { ...this.state } getgiphycat={ this.getGiphyCat } />
 
 		if (this.state.currentPrompt > this.state.prompts.length)  {
-			//cats = <CatInfinity cats={ this.state.cats } message={ this.state.infinityMessage } getinfinitegiphycats={ this.getInfiniteGiphyCats } reset={ this.reset } />
 			cats = <CatInfinity cats={ this.state.cats } message={ this.state.infinityMessage } getinfinitegiphycats={ this.getInfiniteGiphyCats } />
 		}
 
