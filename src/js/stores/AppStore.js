@@ -9,11 +9,18 @@ var CHANGE_EVENT = 'change';
 var _title = 'Y hello thar!';
 var _cats = [];
 var _prompts = Data.prompts;
-var _current = 1;
+var _currentPrompt = 1;
+var _currentCat = -1;
 
 var AppStore = assign({}, EventEmitter.prototype, {
 	getTitle: function() {
 		return _title;
+	},
+	getCurrentCat: function() {
+		return _currentCat;
+	},
+	incrementCurrentCat: function(currentCat) {
+		_currentCat = currentCat;
 	},
 	getCats: function() {
 		return _cats;
@@ -21,11 +28,11 @@ var AppStore = assign({}, EventEmitter.prototype, {
 	addCat: function(cat) {
 		_cats.push(cat);
 	},
-	getCurrent: function() {
-		return _current;
+	getCurrentPrompt: function() {
+		return _currentPrompt;
 	},
-	incrementCurrent: function(current) {
-		_current = current;
+	incrementCurrentPrompt: function(currentPrompt) {
+		_currentPrompt = currentPrompt;
 	},
 	getPrompts: function() {
 		return _prompts;
@@ -47,7 +54,8 @@ AppDispatcher.register(function(payload) {
 	switch (action.actionType) {
 		case AppConstants.GET_GIPHY_CAT:
 			AppStore.addCat(action.cat);
-			AppStore.incrementCurrent(_current+1); // Is this ok?
+			AppStore.incrementCurrentPrompt(_currentPrompt+1);
+			AppStore.incrementCurrentCat(_currentCat+1);
 			AppStore.emit(CHANGE_EVENT);
 			break;
 	}

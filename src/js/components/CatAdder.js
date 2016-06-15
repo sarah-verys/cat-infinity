@@ -6,13 +6,13 @@ var Cat = require('./Cat');
 var CatAdder = React.createClass({
 
 	render: function() {
-		let prompt = this.props.prompts.map(prompt => {
-				if (prompt.id == this.props.current) {
+		var prompt = this.props.prompts.map(prompt => {
+				if (prompt.id == this.props.currentPrompt) {
 					return <Prompt prompt={ prompt.text } key={ prompt.id } button={ prompt.button } />
 				}
 			});
-		let cat = this.props.cats.length ? <Cat cat={ this.props.cats[this.props.current - 2]} /> : ''
-		//console.log(this.props.cats, this.props.cats.length, this.props.current, this.props.cats[2], cat)
+		var cat = this.props.cats.length ? <Cat cat={ this.props.cats[this.props.currentCat]} /> : ''
+
 		return (
 			<div>
 				<h1>{ this.props.title }</h1>

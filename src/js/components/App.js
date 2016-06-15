@@ -9,8 +9,9 @@ function getAppState() {
 	return {
 		title: AppStore.getTitle(),
 		prompts: AppStore.getPrompts(),
-		current: AppStore.getCurrent(),
-		cats: AppStore.getCats()
+		currentPrompt: AppStore.getCurrentPrompt(),
+		cats: AppStore.getCats(),
+		currentCat: AppStore.getCurrentCat()
 	}
 }
 
@@ -19,8 +20,6 @@ var App = React.createClass({
 	getInitialState: function() {
 		return getAppState();
 	},
-
-	componentWillMount: function() { },
 
 	// Listening to the AppStore 
 	componentDidMount: function() {
@@ -34,11 +33,13 @@ var App = React.createClass({
 	},
 
 	render: function() {
-		if (this.state.current > this.state.prompts.length)  {
-			var cats = <CatInfinity />
-		} else {
-			var cats = <CatAdder { ...this.state } />
+
+		var cats = <CatAdder { ...this.state } />
+
+		if (this.state.currentPrompt > this.state.prompts.length)  {
+			cats = <CatInfinity />
 		}
+
 		return (
 			<div>
 				{ cats }

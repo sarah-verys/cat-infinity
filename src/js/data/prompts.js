@@ -8,7 +8,7 @@ module.exports = {
 		{
 			"id": 2,
 			"text": "Nobody has just one cat...",
-			"button": "True story! Another cat please!" 
+			"button": "True story. Another cat please!" 
 		},
 		{
 			"id": 3,
