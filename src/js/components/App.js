@@ -35,12 +35,26 @@ var App = React.createClass({
 		AppStore.removeChangeListener(this.__onChange);
 	},
 
+	getGiphyCat() {
+		AppActions.getGiphyCat();
+	},
+
+	getInfiniteGiphyCats() {
+		this.infiniteCats = setInterval(AppActions.getGiphyCat, 8000);
+	},
+
+	// reset() {
+	// 	clearInterval(this.infiniteCats);
+	// 	AppActions.reset();
+	// },
+
 	render: function() {
 
-		var cats = <CatAdder { ...this.state } />
+		var cats = <CatAdder { ...this.state } getgiphycat={ this.getGiphyCat } />
 
 		if (this.state.currentPrompt > this.state.prompts.length)  {
-			cats = <CatInfinity cats={ this.state.cats } message={ this.state.infinityMessage } />
+			//cats = <CatInfinity cats={ this.state.cats } message={ this.state.infinityMessage } getinfinitegiphycats={ this.getInfiniteGiphyCats } reset={ this.reset } />
+			cats = <CatInfinity cats={ this.state.cats } message={ this.state.infinityMessage } getinfinitegiphycats={ this.getInfiniteGiphyCats } />
 		}
 
 		var error = !!this.state.errorMessage ? <Error message={ this.state.errorMessage } /> : ''

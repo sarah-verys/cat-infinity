@@ -51,9 +51,17 @@ var AppStore = assign({}, EventEmitter.prototype, {
 	setError: function(error) {
 		_error = error;
 	},
-	resetError: function() {
+	resetErrorMessage: function() {
 		_error = null;
 	},
+	// reset: function() {
+	// 	_title = 'Oh.. you again?';
+	// 	_cats = [];
+	// 	_prompts = Data.prompts;
+	// 	_currentPrompt = 1;
+	// 	_currentCat = -1;
+	// 	_error = null;
+	// },
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
 	},
@@ -72,7 +80,7 @@ AppDispatcher.register(function(payload) {
 		case AppConstants.GET_GIPHY_CAT_SUCCESS:
 			// If there was an error, reset it because this is no longer the case!
 			if (!!_error) {
-				AppStore.resetError();
+				AppStore.resetErrorMessage();
 			}
 			// If we are coming from a sad initial state of no cats, change the title
 			if (!_cats.length) {
@@ -90,6 +98,11 @@ AppDispatcher.register(function(payload) {
 			AppStore.setError(action.error);
 			AppStore.emit(CHANGE_EVENT);
 			break;
+
+		// case AppConstants.RESET:
+		// 	AppStore.reset();
+		// 	AppStore.emit(CHANGE_EVENT);
+		// 	break;
 	}
 
 	return true;

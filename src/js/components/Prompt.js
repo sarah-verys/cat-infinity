@@ -1,5 +1,4 @@
 var React = require('react');
-var AppActions = require('../actions/AppActions');
 
 var Prompt = React.createClass({
 
@@ -7,7 +6,7 @@ var Prompt = React.createClass({
 		return (
 			<div id="prompt">
 				<h4>{ this.props.prompt }</h4>
-				<button onClick={ AppActions.getGiphyCat }>{ this.props.button }</button>
+				<button onClick={ this.props.getgiphycat }>{ this.props.button }</button>
 			</div>
 		)
 	}
