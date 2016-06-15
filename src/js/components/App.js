@@ -34,7 +34,7 @@ var App = React.createClass({
 	},
 
 	render: function() {
-		if (this.state.current > 10)  {
+		if (this.state.current > this.state.prompts.length)  {
 			var cats = <CatInfinity />
 		} else {
 			var cats = <CatAdder { ...this.state } />

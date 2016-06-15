@@ -22,21 +22,11 @@ module.exports = {
 		},
 		{
 			"id": 5,
-			"text": "I'm not sure if you have enough cats yet...",
+			"text": "Ok that's probably enough cats for one day...",
 			"button": "Moar kittens!"
 		},
 		{
 			"id": 6,
-			"text": "6t",
-			"button": "6b"
-		},
-		{
-			"id": 7,
-			"text": "7t",
-			"button": "7b"
-		},
-		{
-			"id": 8,
 			"text": "Hm.. some might say you are becoming a crazy cat lady...",
 			"button": "Yeah right! Show me them kitties!!!"
 		}
